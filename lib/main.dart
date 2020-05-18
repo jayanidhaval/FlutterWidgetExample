@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterwidgetexample/ExpandedWidget.dart';
 import 'package:flutterwidgetexample/SafeAreaWidget.dart';
+import 'package:flutterwidgetexample/WrapWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: <String, WidgetBuilder>{
         '/SafeAreaWidget': (BuildContext context) => new SafeAreaWidget(),
-        '/ExpandedWidget': (BuildContext context) => new ExpandedWidget()
+        '/ExpandedWidget': (BuildContext context) => new ExpandedWidget(),
+        '/WrapWidget': (BuildContext context) => new WrapWidget()
       },
     );
   }
@@ -104,6 +106,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.amberAccent,
                 child: new Text(
                   "Expanded Widget",
+                  style: TextStyle(fontSize: 16.0, color: Colors.black),
+                ),
+              ),
+
+              RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/WrapWidget', (Route<dynamic> route) => false);
+                },
+                color: Colors.amberAccent,
+                child: new Text(
+                  "Wrap Widget",
                   style: TextStyle(fontSize: 16.0, color: Colors.black),
                 ),
               )
