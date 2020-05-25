@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterwidgetexample/ExpandedWidget.dart';
 import 'package:flutterwidgetexample/SafeAreaWidget.dart';
 import 'package:flutterwidgetexample/WrapWidget.dart';
+import 'package:flutterwidgetexample/BottomNavigation/BottomNavigation.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/SafeAreaWidget': (BuildContext context) => new SafeAreaWidget(),
         '/ExpandedWidget': (BuildContext context) => new ExpandedWidget(),
-        '/WrapWidget': (BuildContext context) => new WrapWidget()
+        '/WrapWidget': (BuildContext context) => new WrapWidget(),
+        '/BottomNavigation': (BuildContext context) => new BottomNavigation()
       },
     );
   }
@@ -118,6 +120,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.amberAccent,
                 child: new Text(
                   "Wrap Widget",
+                  style: TextStyle(fontSize: 16.0, color: Colors.black),
+                ),
+              ),
+
+              RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/BottomNavigation', (Route<dynamic> route) => false);
+                },
+                color: Colors.amberAccent,
+                child: new Text(
+                  "Bottom Navigation",
                   style: TextStyle(fontSize: 16.0, color: Colors.black),
                 ),
               )
